@@ -1,0 +1,55 @@
+<h1
+  class="text-4xl font-bold bg-gradient-to-r from-[#F29724] via-[#ca1023c4] to-[#c90519] bg-clip-text text-transparent"
+>
+  Learn, Cook, Eat Your Food
+</h1>
+<ul
+  class="flex mt-8 flex-wrap gap-4 font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+>
+  <li class="me-2 cursor-pointer" routerLink="/category/all">
+    <a
+      class="inline-block catLink px-4 py-2 border transition-all hover:shadow-xl shadow duration-300 rounded-full hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+      >All</a
+    >
+  </li>
+  @if (categories) { @for (c of categories; track $index) {
+  <li
+    class="me-2 cursor-pointer"
+    [routerLink]="['/category', c.strCategory]"
+    [routerLinkActive]="['bg-black', 'text-white', 'rounded-full']"
+  >
+    <a
+      aria-current="page"
+      class="inline-block px-4 py-2 catLink border-gray-400 border transition-all hover:shadow-xl shadow duration-300 rounded-full hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300 active"
+      data-discover="true"
+      >{{ c.strCategory }}</a
+    >
+  </li>
+  } }
+</ul>
+<div
+  class="meals mt-24 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-20"
+>
+  @if (meals) { @for (m of meals; track $index) {
+  <div
+    class="meal text-center hover:shadow-xl group hover:scale-105 duration-300 transition-all bg-white p-12 pb-4 rounded-[35px]"
+  >
+    <img
+      [src]="m.strMealThumb"
+      class="w-full group-hover:rotate-[360deg] duration-700 transition-all rounded-full drop-shadow-xl -translate-y-20 shadow-2xl"
+      alt="meal-image"
+    />
+    <h3 class="font-semibold -mt-12 tracking-wider text-xl">
+      {{ m.strMeal }}
+    </h3>
+    <div class="mt-5">
+      <a
+        [routerLink]="['/mealdetails', m.idMeal]"
+        class="block text-sm text-white cursor-pointer bg-gradient-to-r bg-[#21ba75] hover:bg-emerald-600 font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 px-8 py-2 rounded-full"
+      >
+        View Recipe
+      </a>
+    </div>
+  </div>
+  } }
+</div>
