@@ -6,6 +6,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client
     },
   {
+    path: 'mealdetails/:mealId',
+    renderMode: RenderMode.Client
+    },
+  {
     path: '**',
     renderMode: RenderMode.Prerender
   }
